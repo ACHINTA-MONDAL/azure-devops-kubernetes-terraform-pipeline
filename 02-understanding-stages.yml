@@ -1,0 +1,40 @@
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Build
+  jobs:
+  - job: Firstjob
+    steps:
+    - bash: echo Build Firstjob
+  - job: Secondjob
+    steps:
+    - bash: echo Build Secondjob
+- stage: DevDeploy
+  jobs:
+  - job: DevDeploy
+    steps:
+  -  bash: echo DevDeployJob
+
+- stage: QADeploy
+  jobs:
+  - job: QADeploy
+    steps:
+    - bash: echo QADeployjob
+- stage: ProdDeploy
+  jobs:
+  - job: ProdDeploy
+    steps:
+    - bash: echo ProdDeployjob
+steps:
+- script: echo job , step1 !
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
